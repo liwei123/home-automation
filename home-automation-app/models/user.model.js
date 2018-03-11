@@ -4,7 +4,7 @@ var mongoosePaginate = require('mongoose-paginate')
 
 var userSchema = new mongoose.Schema({
     username: String,
-    passord: String,
+    password: String,
     createdDate: Date
 })
 
