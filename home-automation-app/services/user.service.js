@@ -1,5 +1,5 @@
 // Gettign the Newly created Mongoose Model we just created 
-var user = require('../models/user.model')
+var User = require('../models/user.model')
 
 // Saving the context of this module inside the _the variable
 _this = this
@@ -16,7 +16,7 @@ exports.getUsers = async function(query, page, limit){
     // Try Catch the awaited promise to handle the error 
     
     try {
-        var users = await user.paginate(query, options)
+        var users = await User.paginate(query, options)
         
         // Return the todod list that was retured by the mongoose promise
         return users;
@@ -29,14 +29,14 @@ exports.getUsers = async function(query, page, limit){
 }
 
 exports.createUser = async function(user){
-    
     // Creating a new Mongoose Object by using the new keyword
-    var newUser = new user({
+    var newUser = new User({
         username: user.username,
-        password: user.password,
-        createdDate: new Date()       
-    })
+        userPassword: user.userPassword,
+        createdDate: new Date()
 
+    })
+	
     try{
 
         // Saving the user 
@@ -44,9 +44,8 @@ exports.createUser = async function(user){
 
         return savedUser;
     }catch(e){
-      
-        // return a Error message describing the reason     
-        throw Error("Error while Creating user")
+  
+        // return a Error message describing the reason             
     }
 }
 
@@ -56,7 +55,7 @@ exports.updateUser = async function(user){
     try{
         //Find the old User Object by the Id
     
-        var oldUser = await user.findById(id);
+        var oldUser = await User.findById(id);
     }catch(e){
         throw Error("Error occurred while Finding the user")
     }
@@ -70,7 +69,7 @@ exports.updateUser = async function(user){
 
     //Edit the user Object
     oldUser.username = user.username
-    oldUser.password = user.password
+    oldUser.userPassword = user.userPassword
 
 
     console.log(oldUser)
@@ -87,7 +86,7 @@ exports.deleteUser = async function(id){
     
     // Delete the user
     try{
-        var deleted = await user.remove({_id: id})
+        var deleted = await User.remove({_id: id})
         if(deleted.result.n === 0){
             throw Error("User Could not be deleted")
         }

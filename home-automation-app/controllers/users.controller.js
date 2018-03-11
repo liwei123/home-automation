@@ -39,7 +39,7 @@ exports.createUser = async function(req, res, next){
 
     var user = {
         username: req.body.username,
-        password: req.body.password
+        userPassword: req.body.userPassword
     }
 
     try{
@@ -47,11 +47,11 @@ exports.createUser = async function(req, res, next){
         // Calling the Service function with the new object from the Request Body
     
         var createdUser = await userService.createUser(user)
+		
         return res.status(201).json({status: 201, data: createdUser, message: "Succesfully Created User"})
     }catch(e){
         
         //Return an Error Response Message with Code and the Error Message.
-        
         return res.status(400).json({status: 400, message: "User Creation was Unsuccessful"})
     }
 }
@@ -71,7 +71,7 @@ exports.updateUser = async function(req, res, next){
     var user = {
         id,
         username: req.body.username ? req.body.username : null,
-        password: req.body.password ? req.body.password : null
+        userPassword: req.body.userPassword ? req.body.userPassword : null
     }
 
     try{

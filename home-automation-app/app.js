@@ -18,7 +18,7 @@ var app = express();
 //for mongoose support
 var mongoose = require('mongoose')
 mongoose.Promise = bluebird
-mongoose.connect('mongodb://127.0.0.1:27017/home-automation-app', { useMongoClient: true})
+mongoose.connect('mongodb://127.0.0.1:27017/home-automation-app')
 .then(()=> { console.log('Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1:27017/home-automation-app')})
 .catch(()=> { console.log('Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/home-automation-app')})
 
