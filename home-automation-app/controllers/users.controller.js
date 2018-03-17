@@ -88,7 +88,7 @@ exports.removeUser = async function(req, res, next){
 
     try{
         var deleted = await userService.deleteUser(id)
-        return res.status(204).json({status:204, message: "Succesfully user Deleted"})
+        return res.status(200).json({status: 200, message: "Succesfully user Deleted"})
     }catch(e){
         return res.status(400).json({status: 400, message: e.message})
     }
