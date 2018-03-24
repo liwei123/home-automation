@@ -87,9 +87,9 @@ exports.deleteUser = async function(id){
     // Delete the user
     try{
         var deleted = await User.remove({_id: id})
-        if(deleted.result.n === 0){
-            throw Error("User Could not be deleted")
-        }
+        // if(deleted.result.n === 0){
+        //     throw Error("User Could not be deleted")
+        // }
         return deleted
     }catch(e){
         throw Error("Error Occurred while Deleting the user")

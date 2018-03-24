@@ -59,6 +59,13 @@ export class AppComponent implements OnInit{
     }
   }
 
+  deleteUser(user: User) {
+  	console.log("index is " + this.usersList.indexOf(user));	
+    this.userService.deleteUser(user._id).subscribe(res => {	
+      this.usersList.splice(this.usersList.indexOf(user), 1);
+    })
+  }
+
   submitTodo(event, user:User){
     if(event.keyCode ==13){
       this.editUser(user)
