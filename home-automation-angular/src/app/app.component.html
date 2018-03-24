@@ -11,16 +11,16 @@
           <tr class="user" (dblclick)="editUser(user)" *ngFor="let user of usersList">
 
             <ng-container *ngIf="!editUsers.includes(user); else editTD">
-              <td>{{todo.username}}</td>
-              <td>{{todo.password}}</td>
-              <td>{{todo.date | date}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.userPassword}}</td>
+              <td>{{user.createdDate | date}}</td>
             </ng-container>
 
             <ng-template #editTD>
                 <td><input type="text" name="username" id="username" (keypress)="submitUser($event, user)" [(ngModel)]="user.username" placeholder="Username" class="form-control"></td>
-                <td><input type="password" name="password" id="password" (keypress)="submitUser($event, user)" [(ngModel)]="user.password" placeholder="Password"
+                <td><input type="password" name="password" id="password" (keypress)="submitUser($event, user)" [(ngModel)]="user.userPassword" placeholder="Password"
                     class="form-control"></td>
-                <td>{{user.date | date}}</td>
+                <td>{{user.createdDate | date}}</td>
             </ng-template>
 
             <td class="o">
@@ -35,3 +35,18 @@
           </tr>
         </tbody>
 </table>
+<form>
+      <div class="form-row">
+
+        <div class="col-md-5">
+          <input type="text" name="username" id="username" [(ngModel)]="newUser.username" placeholder="Username" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input name="password" id="password" [(ngModel)]="newUser.userPassword" placeholder="Password" class="form-control"
+            id="password">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+        </div>
+      </div>
+    </form>

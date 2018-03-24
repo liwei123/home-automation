@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class UserService {
 
   api_url = 'http://localhost:3000';
-  userUrl = '${this.api_url}/api/users';
+  userUrl = `${this.api_url}/api/users`;
 
   constructor(
     private http: HttpClient
@@ -22,7 +22,7 @@ export class UserService {
   //Create user, takes a user Object
   createUser(user: User): Observable<any>{
     //returns the observable of http post request 
-    return this.http.post('${this.userUrl}', user);
+    return this.http.post(`${this.userUrl}`, user);
   }
 
   //Read todo, takes no arguments
@@ -36,7 +36,7 @@ export class UserService {
   }
   //Update todo, takes a ToDo Object as parameter
   editUser(user:User){
-    let editUrl = '${this.userUrl}'
+    let editUrl = `${this.userUrl}`
     //returns the observable of http put request 
     return this.http.put(editUrl, user);
   }

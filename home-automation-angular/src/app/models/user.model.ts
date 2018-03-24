@@ -1,14 +1,14 @@
 class User {
     _id:string;
     username: string;
-    password: string;
-    date: Date;
+    userPassword: string;
+    createdDate: Date;
 
     constructor(
     ){
         this.username = ""
-        this.password = ""
-        this.date = new Date()
+        this.userPassword = ""
+        this.createdDate = new Date()
     }
 }
 
