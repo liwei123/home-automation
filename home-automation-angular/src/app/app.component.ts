@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  // title = 'app';
+  title = 'app';
 
-   constructor(
+  constructor(
     //Private todoservice will be injected into the component by Angular Dependency Injector
     private userService: UserService
   ) { }
